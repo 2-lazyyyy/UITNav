@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import './../Styles/Navbar.css';
 import image from './../Images/UIT-Logo-big.png';
-import {motion} from 'framer-motion' ;
+import Item1 from './MenuTab1';
+import Item2 from './MenuTab2';
 
 function Navbar(){
     const navRef = useRef();
@@ -47,7 +48,7 @@ function Navbar(){
             <img src={image} className="uitLogo"/>
             <nav ref={navRef}>
                 <div className="Menu" onMouseEnter={()=>handleHover("menu1")} onMouseLeave={handleLeave} onClick={()=>handleToggleAccordion("menu1")}>
-                    <a href='#' className="menu1">
+                    <a href='#' className={windowWidth>1024?"hoverActive menu1":"menu1"} style={{opacity:hoveredTab==='menu1'&&0.7}}>
                         <span>About</span>
                         <svg width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg" className="arrow">
                             <path d={activeTab==="menu1"?"M17 8L8.57895 2L1 8":"M1 1.64285L9.42105 7.64285L17 1.64285"} stroke={windowWidth <= 1024 ? "white" : "black"} stroke-width="2" stroke-linecap="round"/>
@@ -65,7 +66,7 @@ function Navbar(){
                 </div>
 
                 <div className="Menu" onMouseEnter={()=>handleHover("menu2")} onMouseLeave={handleLeave} onClick={()=>handleToggleAccordion("menu2")}>
-                    <a href='#'>
+                    <a href='#' className={windowWidth>1024?"hoverActive menu2":"menu2"} style={{opacity:hoveredTab==='menu2'&&0.7}}>
                         <span>Academic</span>
                         <svg width="18" height="9" viewBox="0 0 18 9" fill="none" xmlns="http://www.w3.org/2000/svg" className="arrow">
                             <path d={activeTab==="menu2"?"M17 8L8.57895 2L1 8":"M1 1.64285L9.42105 7.64285L17 1.64285"} stroke={windowWidth <= 1024 ? "white" : "black"} stroke-width="2" stroke-linecap="round"/>
@@ -77,7 +78,7 @@ function Navbar(){
                     </a>
                     {(hoveredTab === "menu2" && windowWidth > 1024) && (
                         <Item2/>
-                    )}
+                    ) }
                     {(windowWidth <= 1024 && activeTab === "menu2") && (
                         <Item2/>
                     )}
@@ -99,79 +100,4 @@ function Navbar(){
     )
 }
 
-const Item1 = ()=>{
-    return (
-    <motion.div class="item1"
-    initial={{opacity:0, y:-10}}
-    animate={{opacity: 1, y : 10}}
-    transition={{ duration: 0.5}}
-    >
-        <div class="frame">
-            <ul>
-                <li class="title">About UIT</li>
-                <br/>
-                <li>Vision/Mission</li>
-                <li>History</li>
-                <li>FAQS</li>
-            </ul>
-        </div>
-        <div class="frame">
-            <ul>
-                <li class="title">Our Facilities</li>
-                <br/>
-                <li>Library</li>
-                <li>LMS</li>
-                <li>Email Service</li>
-            </ul>
-        </div>
-        <div class="frame">
-            <ul>
-                <li class="title">Our Locations</li>
-                <br/>
-                <li>Contacts</li>
-                <li>Maps</li>
-                <li>Campus</li>
-            </ul>
-        </div>                                
-    </motion.div>
-    )
-}
-
-const Item2 = ()=>{
-    return (
-        <motion.div class="item2"
-        initial={{opacity:0, y:-10}}
-        animate={{opacity: 1, y : 10}}
-        transition={{ duration: 0.5}}
-        >
-        <div class="frame">
-            <ul>
-                <li class="title">Academic Programs</li>
-                <br/>
-                <li>Degree</li>
-                <li>Diploma</li>
-            </ul>
-        </div>
-        <div class="frame">
-            <ul>
-                <li class="title">Student Support Service</li>
-                <br/>
-                <li>LMS</li>
-                <li>Student Registeration</li>
-                <li>Email Service</li>
-                <li>Library</li>
-            </ul>
-        </div>
-        <div class="frame">
-            <ul>
-                <li class="title">Admission</li>
-                <br/>
-                <li>Calendar</li>
-                <li>Academic Rules</li>
-                <li>Campus</li>
-            </ul>
-        </div>                                
-    </motion.div>
-    )
-}
 export default Navbar;

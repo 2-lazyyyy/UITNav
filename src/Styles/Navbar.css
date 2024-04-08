@@ -43,6 +43,7 @@ nav a{
     font-size: 24px;
     padding: 16px 24px 24px 24px;
     position: relative;
+    letter-spacing: 0.7px;
     /* border: 1px solid red; */
 }
 
@@ -62,7 +63,7 @@ nav a{
     width: 100%;
 }
 
-nav a:hover{
+.hoverActive.menu1:hover,.hoverActive.menu2:hover{
     opacity: 0.7;
 }
 
@@ -136,6 +137,7 @@ header .nav-btn{
 .title{
     opacity: 1!important;
     font-size: 21px!important;
+    margin-bottom: 15px!important;
 }
 
 
